@@ -85,8 +85,13 @@ class URLChordExtractor:
                 # If networkidle times out, still proceed
                 page.goto(url, wait_until='domcontentloaded', timeout=20000)
             
-            # Wait a bit for JavaScript to execute
-            page.wait_for_timeout(2000)
+            # Wait for the main content area to be visible
+            print("⏳ Waiting for content to load...")
+            try:
+                page.wait_for_selector('[role="main"]', timeout=5000)
+            except:
+                # If selector not found, just wait a bit more
+                page.wait_for_timeout(2000)
             
             # Try to bypass Cloudflare/security challenges if present
             # Look for and close any overlay/modals

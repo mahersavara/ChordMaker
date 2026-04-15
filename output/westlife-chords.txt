@@ -1,0 +1,33 @@
+════════════════════════════════════════════════════════════
+CHORDMAKER - OFFLINE CHORD SHEET
+════════════════════════════════════════════════════════════
+
+Title: Just a moment...
+Artist: Westlife
+Extracted: 2026-04-16T01:36:11.573929
+Source: https://tabs.ultimate-guitar.com/tab/westlife/i-lay-my-love-on-you-chords-464
+
+════════════════════════════════════════════════════════════
+CHORD CONTENT
+════════════════════════════════════════════════════════════
+
+tabs.ultimate-guitar.com
+Performing security verification
+This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.
+Incompatible browser extension or network configuration
+Your browser extensions or network settings have blocked the security verification process required by tabs.ultimate-guitar.com. To resolve this, try the following steps:
+Temporarily disable browser extensions:
+Go to your browser settings.
+Locate your browser extensions and temporarily disable them.
+Once browser extensions are disabled, refresh this page.
+Check your network settings:
+Verify if your internet or firewall settings have blocked your device from reaching “challenges.cloudflare.com”. You may need to consult your operating system's help documentation or your network administrator for guidance on adjusting firewall settings.
+If you do not have permission to adjust network settings, try connecting to a different network.
+If these steps do not resolve the issue, refer to Cloudflare's troubleshooting documentation for more help. For detailed guidance on how to disable your browser extensions or check your network settings, refer to your browser or device’s documentation.
+
+════════════════════════════════════════════════════════════
+END OF CHORD SHEET
+════════════════════════════════════════════════════════════
+
+📝 Note: This file was extracted for personal offline use.
+🔗 Original source: https://tabs.ultimate-guitar.com/tab/westlife/i-lay-my-love-on-you-chords-464
