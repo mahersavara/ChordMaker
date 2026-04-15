@@ -2,6 +2,52 @@
 
 Utility scripts for ChordMaker to extract and manage chord data.
 
+## extract-url.py ⭐ RECOMMENDED
+
+**Works directly with live URLs - no need to save HTML first!**
+
+A Python script using Playwright browser automation to extract chords directly from Ultimate Guitar URLs.
+
+### Why This One?
+- ✅ Works with live URLs directly
+- ✅ Bypasses 403 blocks automatically
+- ✅ No manual HTML saving required
+- ✅ Handles JavaScript-rendered content
+- ✅ Most user-friendly approach
+
+### Setup (First Time)
+```bash
+pip install playwright beautifulsoup4
+playwright install chromium  # Downloads Chromium (~150MB, one-time only)
+```
+
+### Usage
+```bash
+# Auto-generate filename
+python scripts/extract-url.py "https://tabs.ultimate-guitar.com/tab/westlife/i-lay-my-love-on-you-chords-464"
+
+# Custom filename
+python scripts/extract-url.py "https://tabs.ultimate-guitar.com/tab/westlife/i-lay-my-love-on-you-chords-464" "output/westlife.txt"
+```
+
+---
+
+## extract-local.py
+
+Alternative: Extract from locally saved HTML files (no browser needed).
+
+### When to Use
+- Offline extraction
+- Minimal dependencies
+- Already have HTML saved
+
+### Usage
+```bash
+python scripts/extract-local.py "path/to/saved.html" "output/song.txt"
+```
+
+---
+
 ## extract-chords.js
 
 A Node.js script to extract chords and lyrics from Ultimate Guitar tabs for offline use.
