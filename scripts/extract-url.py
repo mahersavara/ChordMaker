@@ -25,6 +25,11 @@ from pathlib import Path
 try:
     from playwright.sync_api import sync_playwright
     from bs4 import BeautifulSoup
+    try:
+        from playwright_stealth import stealth_sync
+        HAS_STEALTH = True
+    except ImportError:
+        HAS_STEALTH = False
 except ImportError:
     print("❌ Missing required packages!")
     print("Install with: pip install playwright beautifulsoup4")
@@ -38,38 +43,123 @@ class URLChordExtractor:
         self.browser = None
         
     def fetch_url(self, url):
-        """Fetch URL using Playwright (real browser)"""
+        """Fetch URL using Playwright (real browser) with stealth techniques"""
         try:
             print(f"🌐 Opening browser to fetch: {url}")
             self.playwright = sync_playwright().start()
             
-            # Use chromium for speed
+            # Use chromium with stealth context
             self.browser = self.playwright.chromium.launch(headless=True)
-            page = self.browser.new_page()
             
-            # Set a realistic user agent
+            # Create context with more realistic browser properties
+            context = self.browser.new_context(
+                user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                viewport={'width': 1920, 'height': 1080},
+                locale='en-US',
+                timezone_id='America/New_York'
+            )
+            
+            # Apply stealth plugin to bypass detection if available
+            if HAS_STEALTH:
+                stealth_sync(context)
+            
+            page = context.new_page()
+            
+            # Add more realistic headers
             page.set_extra_http_headers({
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Connection': 'keep-alive',
+                'Upgrade-Insecure-Requests': '1',
+                'Sec-Fetch-Dest': 'document',
+                'Sec-Fetch-Mode': 'navigate',
+                'Sec-Fetch-Site': 'none',
             })
             
-            # Navigate to URL (domcontentloaded is faster than networkidle)
+            # Navigate to URL
             print("📄 Loading page...")
-            page.goto(url, wait_until='domcontentloaded', timeout=15000)
-            
-            # Wait for content to load or timeout gracefully
             try:
-                page.wait_for_selector('pre, h1', timeout=5000)
+                page.goto(url, wait_until='networkidle', timeout=20000)
             except:
-                pass  # Continue anyway - we'll work with what loaded
+                # If networkidle times out, still proceed
+                page.goto(url, wait_until='domcontentloaded', timeout=20000)
             
-            # Get page content
-            html = page.content()
+            # Wait a bit for JavaScript to execute
+            page.wait_for_timeout(2000)
             
-            page.close()
+            # Try to bypass Cloudflare/security challenges if present
+            # Look for and close any overlay/modals
+            try:
+                # Try to close common security overlays
+                overlays = page.query_selector_all('[role="dialog"], .modal, .overlay, [class*="security"]')
+                for overlay in overlays:
+                    overlay.evaluate('el => el.style.display = "none"')
+            except:
+                pass
+            
+            # Wait for actual content to load
+            print("⏳ Waiting for content to load...")
+            try:
+                page.wait_for_selector('pre, [class*="content"], [class*="tab"], article', timeout=5000)
+            except:
+                pass
+            
+            # Extract visible text content with better filtering
+            print("🎯 Extracting visible content...")
+            content = page.evaluate("""
+            () => {
+                // Remove common non-content elements
+                const elementsToRemove = document.querySelectorAll('script, style, nav, footer, [role="navigation"], [class*="ad"], [class*="cookie"], [class*="modal"], [class*="overlay"]');
+                for (let el of elementsToRemove) {
+                    el.style.display = 'none';
+                }
+                
+                // Get all text content that's visible on the page
+                let text = document.body.innerText;
+                
+                // Also try to get content from common tab container elements
+                let tabContent = '';
+                const selectors = [
+                    'pre',
+                    '[class*="tab-content"]',
+                    '[class*="chord"]',
+                    '[class*="content"]',
+                    'article',
+                    '[class*="view"]',
+                    'main'
+                ];
+                
+                for (let selector of selectors) {
+                    try {
+                        const elements = document.querySelectorAll(selector);
+                        for (let el of elements) {
+                            if (el.offsetHeight > 0) {  // Check if visible
+                                const txt = el.innerText;
+                                if (txt && txt.length > 150 && txt.includes('\\n')) {
+                                    tabContent = txt;
+                                    break;
+                                }
+                            }
+                        }
+                        if (tabContent) break;
+                    } catch(e) {}
+                }
+                
+                return (tabContent || text).trim();
+            }
+            """)
+            
+            page_title = page.title()
+            
+            context.close()
             self.browser.close()
             self.playwright.stop()
             
-            return html
+            return {
+                'html': content,
+                'title': page_title
+            }
             
         except Exception as e:
             if self.browser:
@@ -233,11 +323,50 @@ First run will download Chromium (~150MB) - this is one-time only.
 
     try:
         extractor = URLChordExtractor()
-        html = extractor.fetch_url(url)
+        result = extractor.fetch_url(url)
         print("✅ Page fetched successfully")
         
+        # Extract chord content from visible text
         print("🎸 Extracting chord content...")
-        data = extractor.extract_from_html(html, url)
+        
+        # Parse the visible content for chord sections
+        content = result['html']
+        lines = content.split('\n')
+        
+        # Find chord-related content (lines with Verse, Chorus, chords, etc.)
+        chord_lines = []
+        capture = False
+        
+        for line in lines:
+            lower_line = line.lower()
+            # Start capturing when we see song structure keywords
+            if any(keyword in lower_line for keyword in ['verse', 'chorus', 'bridge', 'intro', 'outro', 'pre-chorus', 'interlude']):
+                capture = True
+            
+            if capture:
+                chord_lines.append(line)
+        
+        # If no song structure found, just use all non-empty lines
+        if not chord_lines:
+            chord_lines = [line for line in lines if line.strip() and len(line.strip()) > 3]
+        
+        extracted_content = '\n'.join(chord_lines)
+        
+        # Extract title and artist
+        title = result['title'] if 'title' in result else "Unknown"
+        artist = "Unknown"
+        
+        # Try to extract artist from URL
+        artist_match = re.search(r'/tab/([^/]+)/', url)
+        if artist_match:
+            artist = artist_match.group(1).replace('-', ' ').title()
+        
+        data = {
+            'title': title,
+            'artist': artist,
+            'url': url,
+            'content': extracted_content
+        }
         
         # Generate output filename if not provided
         if not output_file:
@@ -245,7 +374,7 @@ First run will download Chromium (~150MB) - this is one-time only.
             if not os.path.exists(output_dir):
                 os.makedirs(output_dir)
             
-            sanitized = re.sub(r'[^a-z0-9]+', '-', data['title'].lower())
+            sanitized = re.sub(r'[^a-z0-9]+', '-', title.lower())
             sanitized = sanitized.strip('-')
             output_file = os.path.join(output_dir, f"{sanitized}.txt")
         
