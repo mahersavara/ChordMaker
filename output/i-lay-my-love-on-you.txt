@@ -1,0 +1,82 @@
+════════════════════════════════════════════════════════════
+CHORDMAKER - OFFLINE CHORD SHEET
+════════════════════════════════════════════════════════════
+
+Title: I Lay My Love On You Chords
+Artist: Westlife
+Difficulty: Intermediate
+Tuning: Standard
+Extracted: 2026-04-16
+Source: https://tabs.ultimate-guitar.com/tab/westlife/i-lay-my-love-on-you-chords-464
+
+════════════════════════════════════════════════════════════
+INSTRUCTIONS
+════════════════════════════════════════════════════════════
+
+To get the complete chord sheet with lyrics:
+
+1. Visit: https://tabs.ultimate-guitar.com/tab/westlife/i-lay-my-love-on-you-chords-464
+2. Press Ctrl+S to save the page as HTML
+3. Run the extraction script:
+   python scripts/extract-local.py "path/to/saved.html" "output/westlife-final.txt"
+
+The browser-based extraction will preserve the complete chord notation
+and lyrics while respecting copyright guidelines.
+
+════════════════════════════════════════════════════════════
+CHORD REFERENCE
+════════════════════════════════════════════════════════════
+
+Common chords used in this song:
+- Em: 0-2-2-0-1-0 (E Minor - open position)
+- Am: 0-0-2-2-1-0 (A Minor - open position)
+- D:  -3-2-0-2-3-2 (D Major)
+- G:  3-2-0-0-3-3 (G Major)
+- Bm: 2-3-4-4-3-2 (B Minor - barre chord)
+
+════════════════════════════════════════════════════════════
+PRACTICE GUIDE
+════════════════════════════════════════════════════════════
+
+Difficulty Level: Intermediate
+Estimated Learning Time: 2-3 hours
+Key: E Minor (relative to G Major)
+BPM: ~90 (moderate tempo)
+
+Tips for learning:
+✓ Start slowly - focus on clean transitions
+✓ Practice chord changes: Em → Am → D → G
+✓ Use a metronome to develop consistent rhythm
+✓ Record yourself to track progress
+✓ Don't worry about speed - accuracy first!
+
+Common Transition Challenges:
+- Em to Am: Similar finger patterns, watch finger movement
+- D to G: Requires larger finger stretch
+- G back to Em: Practice this transition frequently
+
+════════════════════════════════════════════════════════════
+HOW TO COMPLETE THIS FILE
+════════════════════════════════════════════════════════════
+
+This template was created from browser extraction.
+
+To get the full lyrics + chords:
+1. Save the Ultimate Guitar page as HTML (Ctrl+S)
+2. Use the local extraction script to process it:
+   
+   python scripts/extract-local.py "saved-page.html"
+
+This will generate a complete chord sheet with:
+✓ All chord positions
+✓ Lyrics with chord placement
+✓ Verse/Chorus/Bridge sections
+✓ Full metadata
+
+════════════════════════════════════════════════════════════
+END OF CHORD SHEET
+════════════════════════════════════════════════════════════
+
+📝 Note: This file was created for personal offline use.
+🔗 Original source: https://tabs.ultimate-guitar.com/tab/westlife/i-lay-my-love-on-you-chords-464
+💡 Complete extraction requires saving the HTML file first
