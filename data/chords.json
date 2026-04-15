@@ -1,0 +1,58 @@
+[
+  {
+    "id": "Am",
+    "name": "A Minor",
+    "category": "Minor",
+    "difficulty": "Beginner",
+    "strings": [0, 0, 2, 2, 1, 0],
+    "fingers": [0, 0, 2, 2, 1, 0],
+    "description": "Classic open minor chord",
+    "alternates": [
+      {
+        "name": "A Minor (Barre - 5th fret)",
+        "strings": [5, 7, 7, 5, 5, 5],
+        "fingers": [1, 3, 4, 2, 2, 1]
+      }
+    ]
+  },
+  {
+    "id": "Em",
+    "name": "E Minor",
+    "category": "Minor",
+    "difficulty": "Beginner",
+    "strings": [0, 2, 2, 0, 1, 0],
+    "fingers": [0, 2, 2, 0, 1, 0],
+    "description": "The easiest guitar chord to learn",
+    "notes": ["E", "G", "B"]
+  },
+  {
+    "id": "Dm",
+    "name": "D Minor",
+    "category": "Minor",
+    "difficulty": "Beginner",
+    "strings": [-1, -1, 0, 2, 3, 1],
+    "fingers": [0, 0, 0, 2, 3, 1],
+    "description": "Popular open minor chord",
+    "notes": ["D", "F", "A"]
+  },
+  {
+    "id": "Cmaj7",
+    "name": "C Major 7",
+    "category": "Seventh",
+    "difficulty": "Intermediate",
+    "strings": [-1, 3, 2, 0, 0, 0],
+    "fingers": [0, 3, 2, 0, 0, 0],
+    "description": "Sophisticated major seventh chord",
+    "notes": ["C", "E", "G", "B"]
+  },
+  {
+    "id": "G",
+    "name": "G Major",
+    "category": "Major",
+    "difficulty": "Beginner",
+    "strings": [3, 2, 0, 0, 3, 3],
+    "fingers": [2, 1, 0, 0, 3, 4],
+    "description": "Full G major chord",
+    "notes": ["G", "B", "D"]
+  }
+]
