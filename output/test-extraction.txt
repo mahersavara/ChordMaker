@@ -1,0 +1,43 @@
+════════════════════════════════════════════════════════════
+CHORDMAKER - OFFLINE CHORD SHEET
+════════════════════════════════════════════════════════════
+
+Title: I Lay My Love On You Chords
+Artist: Westlife @ Ultimate-Guitar.Com
+Extracted: 2026-04-16T01:07:14.556965
+Source: test-page.html
+
+════════════════════════════════════════════════════════════
+CHORD CONTENT
+════════════════════════════════════════════════════════════
+
+[Verse]
+Em
+Content here
+
+Am
+Content here
+
+D
+Content here
+
+[Chorus]
+G
+Content here
+
+Em
+Content here
+
+[Bridge]
+Am
+Content here
+
+D
+Content here
+
+════════════════════════════════════════════════════════════
+END OF CHORD SHEET
+════════════════════════════════════════════════════════════
+
+📝 Note: This file was extracted for personal offline use.
+🔗 Original source: test-page.html

@@ -1,0 +1,38 @@
+================================
+SONG CHORDS TEMPLATE
+================================
+
+Song Title: [Enter title]
+Artist: [Enter artist]
+Source: [Enter URL]
+Key: [Enter key]
+
+================================
+CHORD PROGRESSION
+================================
+
+[Verse 1]
+Chord: [Chord name]
+[Copy lyrics here from source]
+
+[Chorus]
+Chord: [Chord name]
+[Copy lyrics here from source]
+
+[Bridge]
+Chord: [Chord name]
+[Copy lyrics here from source]
+
+================================
+CHORD REFERENCE
+================================
+E - Standard tuning: 0-2-2-1-0-0
+A - Standard tuning: 0-0-2-2-2-0
+D - Standard tuning: -3-2-0-2-3-2
+
+================================
+NOTES
+================================
+- Difficulty: [Beginner/Intermediate/Advanced]
+- BPM: [Tempo]
+- Tips: [Personal practice notes]
