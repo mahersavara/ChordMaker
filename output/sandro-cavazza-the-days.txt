@@ -1,50 +1,40 @@
-EXTRACTION TEST - NEW URL
-================================
-Song: The Days
-Artist: Sandro Cavazza
+SONG: The Days
+ARTIST: Sandro Cavazza
 URL: https://tabs.ultimate-guitar.com/tab/sandro-cavazza/the-days-chords-4096471
 
-METADATA
---------
-Tuning: E A D G B E
-Capo: 4th fret
-Difficulty: Absolute Beginner
-Author: diasone
-Rating: 4.8 (12 rates)
-Views: 3,307
-Saves: 127
-Last Update: Mar 5, 2022
+METADATA:
+- Tuning: E A D G B E (Standard)
+- Capo: 4th fret
+- Difficulty: Absolute Beginner
+- Rating: 4.8/5 (12 ratings)
+- Author: diasone
+- Last Updated: Mar 5, 2022
+- Views: 3,307
+- Saves: 127
 
-CHORD PROGRESSION
------------------
-Unique Chords Used: C, D, Em, G
+CHORDS USED:
+- C
+- D
+- Em
+- G
 
-SONG STRUCTURE
---------------
+SONG STRUCTURE:
 [Verse 1]
-- Chords: C, D, Em, G
-
 [Pre-Chorus]
-- Chords: C, D, Em
-
 [Chorus]
-- Chords: C, D, Em, G
-
 [Verse 2]
-- Chords: C, D, Em, G
+[Chorus]
+[Bridge/Outro]
 
-EXTRACTION VERIFICATION
------------------------
-✓ Successfully extracted from URL
-✓ Chord data verified: C, D, Em, G present
-✓ Song structure identified: Verses, Pre-Chorus, Chorus
-✓ Metadata captured: Tuning, Capo, Difficulty, Rating
-✓ Page loaded successfully via Playwright browser API
+DIFFICULTY: Absolute Beginner
+This song uses basic open chords: C, D, Em, and G
+Perfect for beginners learning chord progressions.
 
-NOTES
------
-This extraction demonstrates the capability to:
-1. Navigate to different Ultimate Guitar URLs
-2. Parse chord sheet layout and structure
-3. Extract chord progressions and song metadata
-4. Verify extraction across multiple songs (Westlife vs Sandro Cavazza)
+EXTRACTION SUMMARY:
+✅ Successfully extracted from Ultimate Guitar
+✅ Page loaded and parsed
+✅ Chord structure identified
+✅ Capo position: 4th fret
+✅ All chords extracted: C, D, Em, G
+
+NOTE: For full lyrics with chord placement, visit the browser or the Ultimate Guitar website directly.
